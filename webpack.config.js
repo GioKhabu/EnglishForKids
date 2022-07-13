@@ -25,8 +25,14 @@ module.exports = {
         rules: [
             {test: /\.css$/, use: ['style-loader', 'css-loader']},
             {
-                test: /\.(png|svg|jpg|mp3)$/i,
-                use: 'url-loader'
+                test: /\.(png|svg|jpg)$/i,
+                use: {
+                    loader: 'url-loader',
+                    options: {
+                        name: "[name].[hash].[ext]",
+                        outputPath: "imgs"
+                    }
+                }
         },
         ]
 
@@ -43,6 +49,7 @@ module.exports = {
             { from: 'assets/audio', to: './assets/audio' },
             { from: 'assets/img', to: './assets/img' },
         ],
-    }),]
+    }),
+]
   };
   /* eslint-disable */
