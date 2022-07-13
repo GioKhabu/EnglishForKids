@@ -3,6 +3,8 @@ import {
   cards
 } from './assets/cards.js';
 
+import './style.css'
+
 function wait(ms = 0) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)

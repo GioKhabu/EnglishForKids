@@ -1,12 +1,12 @@
 /* eslint-disable */
 const path =require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: path.resolve(__dirname, './script.js')
-
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -27,8 +27,6 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|mp3)$/i,
                 use: 'url-loader'
-
-        
         },
         ]
 
@@ -39,6 +37,12 @@ module.exports = {
         title: "English for Kids",
         filename: "index.html",
         template: path.resolve(__dirname, "./index.html")
-    })]
+    }),
+    new CopyPlugin({
+        patterns: [
+            { from: 'assets/audio', to: './assets/audio' },
+            { from: 'assets/img', to: './assets/img' },
+        ],
+    }),]
   };
   /* eslint-disable */
